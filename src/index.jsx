@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Home from './pages/Home'
-import Survey from './pages/Survey';
+import Home from './pages/Home/Home'
+import Survey from './pages/Survey/Survey';
+import Results from './pages/Results/Results';
+import Freelances from './pages/Freelances/Freelances';
 import Header from './components/Header';
 import Error from './components/Error';
-import Results from './pages/Results';
-import Freelances from './pages/Freelances';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
