@@ -8,11 +8,15 @@ const CardLabel = styled.p`
     color: #5843e4;
     font-size: 20px;
     font: weight: bold;
+    word-break: break-all;
+}
 `;
 
 const CardTitle = styled.p`
     text-align: center;
     font-size: 18px;
+    word-break: break-all;
+}
 `;
 
 const CardImage = styled.img`

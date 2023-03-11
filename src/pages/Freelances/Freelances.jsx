@@ -25,6 +25,7 @@ const CardsContainer = styled.div`
     grid-template-columns: repeat(2, 1fr);
     gap: 50px;
     padding: 2% 0;
+    width: 46%;
 `;
 
 
