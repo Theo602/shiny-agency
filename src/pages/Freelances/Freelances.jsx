@@ -1,5 +1,13 @@
-import DefaultPicture from '../../assets/profile.png'
+import DefaultPicture from '../../assets/img/profile.png'
 import Cart from '../../components/Cart'
+import styled from 'styled-components';
+
+const CardsContainer = styled.div`
+    display: grid;
+    gap: 24px;
+    grid-template-rows: 350px 350px;
+    grid-template-columns: repeat(2, 1fr);
+`;
 
 function Freelances(){
      
@@ -23,17 +31,20 @@ function Freelances(){
 
     return(
         <div>
+
             <h1>Freelances</h1>
 
-            {freelanceProfiles.map((profile,index) => (
-                <Cart 
-                    key={`${profile.name}-${index}`}
-                    label={`${profile.jobTitle}`}
-                    picture={`${profile.picture}`}
-                    title={`${profile.name}`}
-                />
-            ))}
-
+            <CardsContainer>
+                {freelanceProfiles.map((profile,index) => (
+                    <Cart 
+                        key={`${profile.name}-${index}`}
+                        label={`${profile.jobTitle}`}
+                        picture={`${profile.picture}`}
+                        title={`${profile.name}`}
+                    />
+                ))}
+            </CardsContainer>
+            
         </div>
     )
 }
