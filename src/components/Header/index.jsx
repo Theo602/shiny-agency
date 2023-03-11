@@ -1,25 +1,44 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import colors from '../../utils/style/color'
+import logo from '../../assets/img/dark-logo.png'
+import { StyleLink } from '../../utils/style/BtnLink'
 
-const StyleLink = styled(Link)`
-    padding: 15px;
-    color: #8186a0;
-    text-decoration: 18px;
-    font-size: 18px;
-    ${(props) => 
-        props.$isFullLink &&
-        `color: white; border-radius: 30px; background-color: ${colors.primary};`
-    }
-    `;
+const HeaderContainer = styled.header`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+`;
+
+const FigureLogo = styled.figure`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const ImgLogo = styled.img`
+width: 80%;
+`;
+
+const Nav = styled.nav`
+    padding-right: 2%;
+`;
 
 function Header(){
     return(
-        <nav>
-            <StyleLink to="/">Accueil</StyleLink>
-            <StyleLink to="/freelances">Freelances</StyleLink>
-            <StyleLink to="/survey/1" $isFullLink>Questionnaire</StyleLink>
-        </nav>
+
+        <HeaderContainer>
+
+            <FigureLogo>
+                <ImgLogo src={logo} alt="Logo Agency shiny" />
+            </FigureLogo>
+            
+            <Nav>
+                <StyleLink to="/">Accueil</StyleLink>
+                <StyleLink to="/freelances">Profils</StyleLink>
+                <StyleLink to="/survey/1" $isFullLink>Faire le test</StyleLink>
+            </Nav>
+
+        </HeaderContainer>
     )
 }
 

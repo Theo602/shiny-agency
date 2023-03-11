@@ -10,9 +10,18 @@ import Error from './components/Error';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-    div{
+    body{
       font-family: 'Trebuchet MS', Helvetica, sans-serif;
     }  
+
+    ::before,
+    ::after {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+
 
 `;
 

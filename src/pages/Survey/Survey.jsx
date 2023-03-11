@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-
+ 
 function Survey(){
     const { questionNumber } = useParams()
     const question = parseInt(questionNumber);
