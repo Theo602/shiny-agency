@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../assets/img/dark-logo.png'
 import { StyleLink } from '../../utils/style/BtnLink'
@@ -29,7 +30,8 @@ function Header(){
         <HeaderContainer>
 
             <FigureLogo>
-                <ImgLogo src={logo} alt="Logo Agency shiny" />
+                <Link to="/"><ImgLogo src={logo} alt="Logo Agency shiny" /></Link>
+                
             </FigureLogo>
             
             <Nav>

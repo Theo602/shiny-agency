@@ -4,26 +4,32 @@ import styled from 'styled-components';
 import colors from '../../utils/style/color'
 
 
-
-const CardLabel = styled.span`
+const CardLabel = styled.p`
     color: #5843e4;
-    font-size: 22px;
+    font-size: 20px;
     font: weight: bold;
 `;
 
-const CardImage = styled.img`
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
+const CardTitle = styled.p`
+    text-align: center;
+    font-size: 18px;
 `;
+
+const CardImage = styled.img`
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    margin: 10px auto;
+`;
+
+
 
 const CardWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 15px;
+    padding: 20px;
     background-color: ${colors.backgroundLight};
     border-radius: 30px;
-    width: 350px;
     transition: 200ms;
     &:hover {
         cursor: pointer;
@@ -36,7 +42,7 @@ function Card({ label, title, picture }) {
         <CardWrapper>
             <CardLabel>{label}</CardLabel>
             <CardImage src={picture} alt="freelance" />
-            <span>{title}</span>
+            <CardTitle>{title}</CardTitle>
         </CardWrapper>
     )
 }

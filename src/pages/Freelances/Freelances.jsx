@@ -1,13 +1,33 @@
 import DefaultPicture from '../../assets/img/profile.png'
 import Cart from '../../components/Cart'
 import styled from 'styled-components';
+import colors from '../../utils/style/color'
+
+const ContainerFreelance = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4%;
+`;
+
+const TitleFreelance = styled.h1`
+    font-size: 30px;
+    color: ${colors.textTitle};
+`;
+
+const TextFreelance = styled.p`
+    font-size: 18px;
+    color: ${colors.textSousTitle};
+`;
 
 const CardsContainer = styled.div`
     display: grid;
-    gap: 24px;
-    grid-template-rows: 350px 350px;
     grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    padding: 2% 0;
 `;
+
+
 
 function Freelances(){
      
@@ -27,12 +47,18 @@ function Freelances(){
             jobTitle: 'Développeuse Fullstack',
             picture: DefaultPicture,
         },
+        {
+            name: 'Jeanne Biche',
+            jobTitle: 'Développeuse Fullstack',
+            picture: DefaultPicture,
+        },
     ]
 
     return(
-        <div>
+        <ContainerFreelance>
 
-            <h1>Freelances</h1>
+            <TitleFreelance>Trouvez votre prestataire</TitleFreelance>
+            <TextFreelance>Chez Shiny nous réunissons les meilleurs profils pour vous.</TextFreelance>
 
             <CardsContainer>
                 {freelanceProfiles.map((profile,index) => (
@@ -45,7 +71,7 @@ function Freelances(){
                 ))}
             </CardsContainer>
             
-        </div>
+        </ContainerFreelance>
     )
 }
 

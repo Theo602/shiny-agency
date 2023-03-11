@@ -1,3 +1,4 @@
+
 import styled from 'styled-components';
 import colors from '../../utils/style/color'
 import illustrationHome from '../../assets/img/home-illustration.svg'
@@ -30,25 +31,6 @@ const TitleHome = styled.h1`
     padding: 20px;
     width: 79%;
 `;
-
-// const BtnHome = styled(Link)`
-//     padding: 20px;
-//     text-decoration: none;
-//     font-size: 18px;
-//     color: white;
-//     border: 1px solid transparent;
-//     padding: 10px 50px;
-//     border-radius: 30px;
-//     background-color: ${colors.primary};
-//     font-weight: bold;
-//     width: 20%;
-//     margin-left: 20px;
-//     &:hover{
-//       text-decoration: none;
-//       background-color: ${colors.textTitle};
-//       transition: 1s
-//    }
-// `;
 
 const FigureRight = styled.figure`
     flex: 1;

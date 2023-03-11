@@ -6,7 +6,7 @@ import colors from './color'
 export const StyleLink = styled(Link)`
     padding: 20px; 
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     &:hover{
         text-decoration: underline ${colors.colorHover};
