@@ -30,8 +30,7 @@ function Header(){
         <HeaderContainer>
 
             <FigureLogo>
-                <Link to="/"><ImgLogo src={logo} alt="Logo Agency shiny" /></Link>
-                
+                <Link to="/"><ImgLogo src={logo} alt="Logo Agency shiny" /></Link>   
             </FigureLogo>
             
             <Nav>

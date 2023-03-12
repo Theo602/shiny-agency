@@ -5,7 +5,7 @@ import colors from '../../utils/style/color'
 
 
 const CardLabel = styled.p`
-    color: #5843e4;
+    color: ${colors.primary};
     font-size: 20px;
     font: weight: bold;
     word-break: break-all;

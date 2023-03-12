@@ -56,6 +56,7 @@ function Freelances(){
     ]
 
     return(
+        
         <ContainerFreelance>
 
             <TitleFreelance>Trouvez votre prestataire</TitleFreelance>

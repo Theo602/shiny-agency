@@ -6,7 +6,7 @@ import { StyleLink } from '../../utils/style/BtnLink'
 
 const ContainerHome = styled.section`
     margin: 4%;
-    background: #F9F9FC;
+    background: ${colors.backgroundLight};
     display: flex;
     align-items: center;
     padding: 4%;
