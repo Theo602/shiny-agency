@@ -20,10 +20,10 @@ const CardTitle = styled.p`
 `;
 
 const CardImage = styled.img`
-    height: 90px;
-    width: 90px;
     border-radius: 50%;
-    margin: 10px auto;
+    margin: 20px auto;
+    height: 140px;
+    width: 140px;
 `;
 
 
@@ -31,6 +31,7 @@ const CardImage = styled.img`
 const CardWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     padding: 20px;
     background-color: ${colors.backgroundLight};
     border-radius: 30px;
@@ -42,6 +43,7 @@ const CardWrapper = styled.div`
 `
 
 function Card({ label, title, picture }) {
+    
     return (
         <CardWrapper>
             <CardLabel>{label}</CardLabel>

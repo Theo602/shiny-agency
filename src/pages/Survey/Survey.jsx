@@ -59,9 +59,9 @@ function Survey(){
             setIsDataLoading(true);
 
             try{
-                const response = await fetch('http://localhost:8000/survey')
-                const { surveyData } = await response.json()
-                setSurveyData(surveyData)
+                const response = await fetch('http://localhost:8000/survey');
+                const { surveyData } = await response.json();
+                setSurveyData(surveyData);
             }
             catch(error){
                 console.log('=== error ===', error);
@@ -71,7 +71,7 @@ function Survey(){
                 setIsDataLoading(false);
             }
         }
-        fetchSurvey()
+        fetchSurvey();
     }, []);
 
     if(error) {
