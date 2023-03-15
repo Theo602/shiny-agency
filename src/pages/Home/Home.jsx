@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 import colors from '../../utils/style/color'
 import illustrationHome from '../../assets/img/home-illustration.svg'
@@ -10,6 +9,7 @@ const ContainerHome = styled.section`
     display: flex;
     align-items: center;
     padding: 4%;
+    min-height: calc(100vh - 200px);
 `;
 
 const ContainerLeft = styled.div`

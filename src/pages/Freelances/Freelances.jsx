@@ -9,6 +9,7 @@ const ContainerFreelance = styled.section`
     flex-direction: column;
     align-items: center;
     padding: 4%;
+    min-height: calc(100vh - 200px);
 `;
 
 const TitleFreelance = styled.h1`
@@ -34,6 +35,7 @@ const ContentError = styled.p`
     font-size: 25px;
     text-align: center;
     padding: 4%;
+    min-height: calc(100vh - 200px);
 `;
 
 function Freelances(){

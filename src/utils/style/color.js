@@ -6,7 +6,6 @@ const colors = {
     textTitle: '#2F2E41',
     textSousTitle: '#8186A0',
     colorHover: '#0c8ce9'
-
 }
 
 export default colors;

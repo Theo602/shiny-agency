@@ -1,13 +1,17 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import logo from '../../assets/img/dark-logo.png'
+import darkLogo from '../../assets/img/dark-logo.png'
+import lightLogo from '../../assets/img/light-logo.png'
+import { ThemeContext } from '../../utils/context';
 import { StyleLink } from '../../utils/style/BtnLink'
 
 const HeaderContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 0 20px;
+    height: 150px;
 `;
 
 const FigureLogo = styled.figure`
@@ -17,7 +21,7 @@ const FigureLogo = styled.figure`
 `;
 
 const ImgLogo = styled.img`
-width: 80%;
+    width: 80%;
 `;
 
 const Nav = styled.nav`
@@ -25,17 +29,20 @@ const Nav = styled.nav`
 `;
 
 function Header(){
+
+    const { theme } = useContext(ThemeContext);
+
     return(
 
         <HeaderContainer>
 
             <FigureLogo>
-                <Link to="/"><ImgLogo src={logo} alt="Logo Agency shiny" /></Link>   
+                <Link to="/"><ImgLogo src={ theme === 'dark' ? lightLogo : darkLogo} alt="Logo Agency shiny" /></Link>   
             </FigureLogo>
             
             <Nav>
-                <StyleLink to="/">Accueil</StyleLink>
-                <StyleLink to="/freelances">Profils</StyleLink>
+                <StyleLink $theme={theme} to="/">Accueil</StyleLink>
+                <StyleLink $theme={theme} to="/freelances">Profils</StyleLink>
                 <StyleLink to="/survey/1" $isFullLink>Faire le test</StyleLink>
             </Nav>
 

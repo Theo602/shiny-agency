@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from 'styled-components';
+import { SurveyContext } from "../../utils/context";
 import colors from '../../utils/style/color'
 import { Loader } from "../../utils/style/Loader";
 
@@ -9,6 +10,7 @@ const ContainerQuestion = styled.section`
     flex-direction: column;
     align-items: center;
     padding: 4%;
+    min-height: calc(100vh - 200px);
 `;
 
 const TittleQuestion = styled.h2`
@@ -42,7 +44,29 @@ const ContentError = styled.p`
     font-size: 25px;
     text-align: center;
     padding: 4%;
+    min-height: calc(100vh - 200px);
 `;
+
+const ContainerReply = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const ReplyBox = styled.button`
+  border: none;
+  height: 80px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${colors.backgroundLight};
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 0 20px;
+  box-shadow: ${(props) =>
+    props.isSelected ? `0px 0px 0px 2px ${colors.primary} inset` : 'none'};
+
+`
 
 function Survey(){
     const { questionNumber } = useParams()
@@ -52,7 +76,14 @@ function Survey(){
     const [surveyData, setSurveyData] = useState({});
     const [isDataLoading, setIsDataLoading] = useState(false);
     const [error, setError] = useState(false);
+    const { answers, saveAnswers } = useContext(SurveyContext);
 
+
+    function saveReply(answers){
+        
+        saveAnswers({ [questionNumber]: answers })
+    }
+    
     useEffect(() => {
 
         async function fetchSurvey(){
@@ -84,13 +115,31 @@ function Survey(){
 
             <TittleQuestion>Question { questionNumber }</TittleQuestion>
             
-            {isDataLoading ?
-            
-                (<Loader />)
-                :
-                (<ContentQuestion>{surveyData[questionNumber]} </ContentQuestion>)
+                {isDataLoading ?
+                
+                    (<Loader />)
+                    :
+                    (<ContentQuestion>{surveyData[questionNumber]} </ContentQuestion>)
 
-            }
+                }
+
+            <ContainerReply>
+            
+                <ReplyBox
+                    onClick={() => saveReply(true)}
+                    isSelected={answers[questionNumber] === true}
+                >
+                    Oui
+                </ReplyBox>
+
+                <ReplyBox
+                    onClick={() => saveReply(false)}
+                    isSelected={answers[questionNumber] === false}
+                >
+                    Non
+                </ReplyBox>
+      
+            </ContainerReply>
 
             <ContainerArrow>
 
