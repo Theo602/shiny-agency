@@ -8,14 +8,14 @@ export const StyleLink = styled(Link)`
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
-    color: ${({ $theme }) => ($theme === "light" ? '#5843E4' : '#fff')};
+    color: ${({ $theme }) => ($theme === "light" ? colors.primary : colors.colorWhite)};
     &:hover{
-        text-decoration: underline ${({ $theme }) => ($theme === "light" ? '#5843E4' : '#fff')};
+        text-decoration: underline ${({ $theme }) => ($theme === "light" ? colors.primary : colors.colorWhite)};
     }
     ${(props) => 
         props.$isFullLink &&
         `
-            color: #fff; 
+            color: ${colors.colorWhite};
             border: 1px solid transparent; 
             padding: 15px 25px;
             border-radius: 30px;
@@ -23,8 +23,9 @@ export const StyleLink = styled(Link)`
             font-weight: bold;
             &:hover{
                 text-decoration: none;
-                background-color: ${colors.textTitle};
-                transition: 1s
+                color: ${(props.$isFullLink === "light" ? colors.colorWhite : colors.colorDefaut)};
+                background-color: ${(props.$isFullLink === "light" ? colors.textTitle : colors.colorWhite)};
+                transition: 1s;
          }`
     }
 

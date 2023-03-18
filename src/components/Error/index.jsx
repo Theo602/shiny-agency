@@ -43,7 +43,7 @@ function Error(){
                 <ImgNotFound src={imageError} alt="Page not found" />
             </FigureError>
             
-            <SecondeTitle>Il semblerait qu’il y ait un problème</SecondeTitle>
+            <SecondeTitle>Il semblerait que la page que vous cherchez n’existe pas</SecondeTitle>
 
         </ContainerFreelance>
     )

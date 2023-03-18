@@ -8,9 +8,8 @@ import Freelances from './pages/Freelances/Freelances';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Error from './components/Error';
-import { ThemeProvider } from './utils/context';
+import { ThemeProvider, SurveyProvider } from './utils/context';
 import GlobalStyle from './utils/style/GlobalStyle'
-import { SurveyProvider } from './utils/context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

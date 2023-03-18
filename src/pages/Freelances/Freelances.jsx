@@ -3,6 +3,7 @@ import Cart from '../../components/Cart'
 import styled from 'styled-components';
 import colors from '../../utils/style/color'
 import { Loader } from "../../utils/style/Loader";
+import { useFetch } from "../../utils/hooks";
 
 const ContainerFreelance = styled.section`
     display: flex;
@@ -12,7 +13,7 @@ const ContainerFreelance = styled.section`
     min-height: calc(100vh - 200px);
 `;
 
-const TitleFreelance = styled.h1`
+const TitleFreelance = styled.h2`
     font-size: 30px;
     color: ${colors.textTitle};
 `;
@@ -40,32 +41,9 @@ const ContentError = styled.p`
 
 function Freelances(){
      
-    const [freelancersList, setFreelancersList] = useState([]);
-    const [isDataLoading, setIsDataLoading] = useState(false);
-    const [error, setError] = useState(false);
 
-    useEffect(() => {
-
-        async function fetchProfil(){
-
-            setIsDataLoading(true);
-
-            try {
-                const response = await fetch('http://localhost:8000/freelances');
-                const  { freelancersList }  = await response.json(); 
-                setFreelancersList(freelancersList);                      
-            } 
-            catch (error) {
-                console.log('=== error ===', error);
-                setError(true);
-            }
-            finally{
-                setIsDataLoading(false);
-            }
-        }
-        fetchProfil();
-
-    }, [])   
+    const { data, isLoading, error } = useFetch('http://localhost:8000/freelances'); 
+    const { freelancersList } = data;   
      
     if(error) {
         return <ContentError>Oups il ya un problème</ContentError>
@@ -78,9 +56,10 @@ function Freelances(){
             <TitleFreelance>Trouvez votre prestataire</TitleFreelance>
             <TextFreelance>Chez Shiny nous réunissons les meilleurs profils pour vous.</TextFreelance>
 
-            { isDataLoading ?
+            { isLoading ?
             
                 (<Loader />)
+                
                 :
 
                 (<CardsContainer>

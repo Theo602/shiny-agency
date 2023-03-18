@@ -1,9 +1,8 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import darkLogo from '../../assets/img/dark-logo.png'
 import lightLogo from '../../assets/img/light-logo.png'
-import { ThemeContext } from '../../utils/context';
+import { useTheme } from '../../utils/hooks';
 import { StyleLink } from '../../utils/style/BtnLink'
 
 const HeaderContainer = styled.header`
@@ -30,7 +29,7 @@ const Nav = styled.nav`
 
 function Header(){
 
-    const { theme } = useContext(ThemeContext);
+    const { theme } = useTheme();
 
     return(
 
@@ -43,7 +42,7 @@ function Header(){
             <Nav>
                 <StyleLink $theme={theme} to="/">Accueil</StyleLink>
                 <StyleLink $theme={theme} to="/freelances">Profils</StyleLink>
-                <StyleLink to="/survey/1" $isFullLink>Faire le test</StyleLink>
+                <StyleLink  to="/survey/1" $isFullLink={theme}>Faire le test</StyleLink>
             </Nav>
 
         </HeaderContainer>

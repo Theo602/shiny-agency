@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { SurveyContext } from "../../utils/context";
 import colors from '../../utils/style/color'
 import { Loader } from "../../utils/style/Loader";
+import { useFetch } from "../../utils/hooks";
+
 
 const ContainerQuestion = styled.section`
     display: flex;
@@ -73,53 +75,32 @@ function Survey(){
     const question = parseInt(questionNumber);
     const questionPrevious = question === 1 ? 1 : question - 1;
     const questionNext = question + 1;
-    const [surveyData, setSurveyData] = useState({});
-    const [isDataLoading, setIsDataLoading] = useState(false);
-    const [error, setError] = useState(false);
+
     const { answers, saveAnswers } = useContext(SurveyContext);
 
+    const { data, isLoading, error } = useFetch('http://localhost:8000/survey'); 
+    const { surveyData } = data;
 
+    if(error) {
+        return <ContentError>Oups il ya un problème</ContentError>
+    }
+    
     function saveReply(answers){
         
         saveAnswers({ [questionNumber]: answers })
     }
     
-    useEffect(() => {
-
-        async function fetchSurvey(){
-            setIsDataLoading(true);
-
-            try{
-                const response = await fetch('http://localhost:8000/survey');
-                const { surveyData } = await response.json();
-                setSurveyData(surveyData);
-            }
-            catch(error){
-                console.log('=== error ===', error);
-                setError(true);
-            }
-            finally{
-                setIsDataLoading(false);
-            }
-        }
-        fetchSurvey();
-    }, []);
-
-    if(error) {
-        return <ContentError>Oups il ya un problème</ContentError>
-    }
-
     return(
 
         <ContainerQuestion>
 
             <TittleQuestion>Question { questionNumber }</TittleQuestion>
             
-                {isDataLoading ?
+                {isLoading ?
                 
                     (<Loader />)
                     :
-                    (<ContentQuestion>{surveyData[questionNumber]} </ContentQuestion>)
+                    (<ContentQuestion>{surveyData && surveyData[questionNumber]} </ContentQuestion>)
 
                 }
 
@@ -145,7 +126,7 @@ function Survey(){
 
                 <Link to={`/survey/${questionPrevious}`}>Précédent</Link>
                 
-                {surveyData[question + 1] ? 
+                {surveyData && surveyData[question + 1] ? 
                     (<Link to={`/survey/${questionNext}`}>Suivant</Link>)
                     :
                     (<Link to="/results">Resultats</Link>)
