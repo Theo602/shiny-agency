@@ -4,11 +4,13 @@ import { useFetch, useTheme } from "../../utils/hooks";
 import colors from '../../utils/style/color'
 import styled from 'styled-components';
 import { Loader } from "../../utils/style/Loader";
-import { StyleLink } from "../../utils/style/BtnLink";
+import { PageLink } from "../../utils/style/BtnLink";
+
 
 const ContainerResults = styled.section`
     margin: 4%;
-    background: ${({ theme }) => (theme === "light" ? colors.backgroundLight : colors.primary)};
+    background: ${({ theme }) => (theme === "light" ? colors.backgroundLight : colors.backgroundDark)};
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,18 +53,18 @@ const TitleResults = styled.h2`
 `;
 
 const SubTitleResults = styled.span`
-    color: ${({ theme }) => (theme === "light" ? colors.primary : colors.colorDefaut)};
+    color: ${({ theme }) => (theme === "light" ? colors.primary : colors.colorWhite)};
     padding-left: 10px;
 `;
 
 const TittleInformation = styled.h3`
     font-size: 25px;
-    color: ${({ theme }) => (theme === "light" ? colors.primary : colors.colorDefaut)};
+    color: ${({ theme }) => (theme === "light" ? colors.primary : colors.colorWhite)};
     margin: 10px 0px;
 `;
 
 const TextInformation = styled.p`
-    color: ${({ theme }) => (theme === "light" ? colors.colorDefaut : colors.colorWhite)};
+    color: ${({ theme }) => (theme === "light" ? colors.colorBlack : colors.colorWhite)};
     font-size: 20px;
     margin: 0px;
     line-height: 25px;
@@ -70,12 +72,12 @@ const TextInformation = styled.p`
 
 const TextError = styled.p`
     font-size: 25px;
-    color: ${({ theme }) => (theme === "light" ? colors.textSousTitle : colors.colorDefaut)};
+    color: ${({ theme }) => (theme === "light" ? colors.textSousTitle : colors.colorWhite)};
     margin: 30px 0px;
 `
 
 const FetchError = styled.p`
-    color: ${({ theme }) => (theme === "light" ? colors.primary : colors.colorDefaut)};
+    color: ${({ theme }) => (theme === "light" ? colors.primary : colors.colorWhite)};
     font-size: 25px;
     text-align: center;
     padding: 4%;
@@ -83,6 +85,7 @@ const FetchError = styled.p`
 `;
 
 function formatFetchParams(answers){
+    
     const answersNumbers = Object.keys(answers);
 
     return answersNumbers.reduce((previousParams, answersNumbers, index) => {
@@ -93,8 +96,7 @@ function formatFetchParams(answers){
 }
 
 const firstLetterCapitalize = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1)
-
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function Results(){
@@ -143,7 +145,7 @@ function Results(){
                                         
                                     </TitleResults>
                                     
-                                    <StyleLink to="/freelances" $isFullLink={theme}>Découvrez nos profils</StyleLink>
+                                    <PageLink to="/freelances" $theme={theme}>Découvrez nos profils</PageLink>
 
                                     <ContentInformation>
                                         {
@@ -168,8 +170,8 @@ function Results(){
 
                             (
                                 <ContentError>
-                                    <TextError>Pas de résultats, veuillez répondre au questionnaire</TextError>
-                                    <StyleLink to="/survey/1" $isFullLink={theme}>Faire le test</StyleLink>
+                                    <TextError theme={theme}>Pas de résultats, veuillez répondre au questionnaire</TextError>
+                                    <PageLink to="/survey/1" $theme={theme}>Faire le test</PageLink>
                                 </ContentError>
                             )
 

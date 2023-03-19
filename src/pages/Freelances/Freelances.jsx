@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
 import Cart from '../../components/Cart'
 import styled from 'styled-components';
 import colors from '../../utils/style/color'
 import { Loader } from "../../utils/style/Loader";
-import { useFetch } from "../../utils/hooks";
+import { useFetch, useTheme } from "../../utils/hooks";
+
 
 const ContainerFreelance = styled.section`
     display: flex;
@@ -15,12 +15,12 @@ const ContainerFreelance = styled.section`
 
 const TitleFreelance = styled.h2`
     font-size: 30px;
-    color: ${colors.textTitle};
+    color: ${({ theme }) => (theme === "light" ? colors.textTitle : colors.colorWhite)};
 `;
 
 const TextFreelance = styled.p`
     font-size: 18px;
-    color: ${colors.textSousTitle};
+    color: ${({ theme }) => (theme === "light" ? colors.textSousTitle : colors.colorWhite)};
 `;
 
 const CardsContainer = styled.div`
@@ -32,7 +32,7 @@ const CardsContainer = styled.div`
 `;
 
 const ContentError = styled.p`
-    color: ${colors.primary};
+    color: ${({ theme }) => (theme === "light" ? colors.primary : colors.colorWhite)};
     font-size: 25px;
     text-align: center;
     padding: 4%;
@@ -41,20 +41,20 @@ const ContentError = styled.p`
 
 function Freelances(){
      
-
     const { data, isLoading, error } = useFetch('http://localhost:8000/freelances'); 
     const { freelancersList } = data;   
-     
+    const { theme } = useTheme();
+
     if(error) {
-        return <ContentError>Oups il ya un problème</ContentError>
+        return <ContentError theme={theme}>Oups il ya un problème</ContentError>
     }
 
     return(
         
         <ContainerFreelance>
 
-            <TitleFreelance>Trouvez votre prestataire</TitleFreelance>
-            <TextFreelance>Chez Shiny nous réunissons les meilleurs profils pour vous.</TextFreelance>
+            <TitleFreelance theme={theme}>Trouvez votre prestataire</TitleFreelance>
+            <TextFreelance theme={theme}>Chez Shiny nous réunissons les meilleurs profils pour vous.</TextFreelance>
 
             { isLoading ?
             
@@ -62,7 +62,7 @@ function Freelances(){
                 
                 :
 
-                (<CardsContainer>
+                (<CardsContainer theme={theme}>
                     
                     {  
                         freelancersList.map((profil, index ) => (

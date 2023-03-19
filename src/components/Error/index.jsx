@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import imageError from '../../assets/img/404.svg'
+import { useTheme } from '../../utils/hooks';
 import colors from '../../utils/style/color'
+
 
 const ContainerFreelance = styled.section`
     display: flex;
@@ -8,16 +10,16 @@ const ContainerFreelance = styled.section`
     align-items: center;
     padding: 4%;
     margin: 4%;
-    background: ${colors.backgroundLight};
+    background: ${({ theme }) => (theme === "light" ? colors.backgroundLight : colors.backgroundDark)};
 `;
 
 const FirstTitle = styled.h2`
-    color: ${colors.textTitle};
+    color: ${({ theme }) => (theme === "light" ? colors.textTitle : colors.colorWhite)};
     font-size: 25px;
 `;
 
 const SecondeTitle = styled.h3`
-    color: ${colors.textTitle};
+    color: ${({ theme }) => (theme === "light" ? colors.textTitle : colors.colorWhite)};
     font-size: 20px;
 `;
 
@@ -33,17 +35,20 @@ const ImgNotFound = styled.img`
 `;
 
 function Error(){
+
+    const { theme } = useTheme();
+
     return(
 
-        <ContainerFreelance>
+        <ContainerFreelance theme={theme}>
 
-            <FirstTitle>Oups...</FirstTitle>
+            <FirstTitle theme={theme}>Oups...</FirstTitle>
 
             <FigureError>
                 <ImgNotFound src={imageError} alt="Page not found" />
             </FigureError>
             
-            <SecondeTitle>Il semblerait que la page que vous cherchez n’existe pas</SecondeTitle>
+            <SecondeTitle theme={theme}>Il semblerait que la page que vous cherchez n’existe pas</SecondeTitle>
 
         </ContainerFreelance>
     )

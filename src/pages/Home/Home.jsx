@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import colors from '../../utils/style/color'
 import illustrationHome from '../../assets/img/home-illustration.svg'
-import { StyleLink } from '../../utils/style/BtnLink'
+import { PageLink } from '../../utils/style/BtnLink'
+import { useTheme } from "../../utils/hooks";
+
 
 const ContainerHome = styled.section`
     margin: 4%;
-    background: ${colors.backgroundLight};
+    background: ${({ theme }) => (theme === "light" ? colors.backgroundLight : colors.backgroundDark)};
+    border-radius: 10px;
     display: flex;
     align-items: center;
     padding: 4%;
@@ -17,7 +20,7 @@ const ContainerLeft = styled.div`
     display: flex;
     flex-direction: column;
     padding: 20px;
-    ${StyleLink}{
+    ${PageLink}{
         padding: 10px 50px;
         width: 20%;
         margin-left: 20px;
@@ -25,7 +28,7 @@ const ContainerLeft = styled.div`
 `;
 
 const TitleHome = styled.h1`
-    color: ${colors.textTitle};
+    color: ${({ theme }) => (theme === "light" ? colors.textTitle : colors.colorWhite)};
     font-size: 40px;
     line-height: 60px;
     padding: 20px;
@@ -43,28 +46,31 @@ const ImageHome = styled.img`
 `;
 
 function Home() {
-  return(
 
-    <ContainerHome>
+    const { theme } = useTheme();
 
-        <ContainerLeft>
+    return(
 
-            <TitleHome>
-                Repérez vos besoins, on s’occupe du reste, avec les meilleurs talents
-            </TitleHome>
+        <ContainerHome theme={theme}>
 
-            <StyleLink to="/survey/1" $isFullLink>Faire le test</StyleLink>
+            <ContainerLeft>
 
-        </ContainerLeft>
+                <TitleHome theme={theme}>
+                    Repérez vos besoins, on s’occupe du reste, avec les meilleurs talents
+                </TitleHome>
 
-        <FigureRight>
-            <ImageHome src={illustrationHome} alt="Logo Agency shiny" />
-        </FigureRight>
-        
-    </ContainerHome>
+                <PageLink to="/survey/1" $theme={theme}>Faire le test</PageLink>
+
+            </ContainerLeft>
+
+            <FigureRight>
+                <ImageHome src={illustrationHome} alt="Logo Agency shiny" />
+            </FigureRight>
+            
+        </ContainerHome>
 
 
-  )
+    )
 }
 
 export default Home;
