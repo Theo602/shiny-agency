@@ -84,7 +84,7 @@ const FetchError = styled.p`
     min-height: calc(100vh - 200px);
 `;
 
-function formatFetchParams(answers){
+export function formatQueryParams(answers){
     
     const answersNumbers = Object.keys(answers);
 
@@ -95,15 +95,22 @@ function formatFetchParams(answers){
     }, '');
 }
 
-const firstLetterCapitalize = (string) => {
+export const firstLetterCapitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export function formatJobList(title, listLength, index){
+    if(index === listLength - 1){
+        return firstLetterCapitalize(title);
+    }
+    return `${firstLetterCapitalize(title)},`
 }
 
 function Results(){
     
     const { theme } = useTheme();
     const { answers } = useContext(SurveyContext);
-    const fetchParams = formatFetchParams(answers);
+    const fetchParams = formatQueryParams(answers);
     const { data, isLoading, error } = useFetch(`http://localhost:8000/results?${fetchParams}`);
 
     const { resultsData } = data;
@@ -136,9 +143,10 @@ function Results(){
                                       
                                         {
                                             resultsData.map((title, index) => (
-                                                <SubTitleResults theme={theme} key={`result-title-${title.title}-${index}` }>
-                                                    {firstLetterCapitalize(title.title)}   
-                                                    {index === resultsData.length - 1 ? '' : ','}                
+                                                <SubTitleResults 
+                                                    theme={theme} 
+                                                    key={`result-title-${title.title}-${index}` }>
+                                                    {formatJobList(title.title, resultsData.length, index)}              
                                                 </SubTitleResults>
                                             ))
                                         }
