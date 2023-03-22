@@ -1,0 +1,73 @@
+import Cart from './'
+import { render, screen, fireEvent } from '@testing-library/react'
+import { ThemeProvider } from '../../utils/context'
+
+describe('Cart', () => {
+
+    test('Should render without crash', async () => {
+        render(
+            <ThemeProvider>
+                <Cart />
+            </ThemeProvider>
+        )
+    })
+
+    test('Passing props picture', async () => {
+        
+        render(
+            <ThemeProvider>
+                <Cart                         
+                    label="cart label"
+                    title="test composant"
+                    picture="/test.png" 
+                />
+            </ThemeProvider>
+        )
+        const cardImage = screen.getByRole('img');
+        expect(cardImage.src).toBe('http://localhost/test.png');
+    })
+
+    test('Passing props title', async () => {
+        
+        render(
+            <ThemeProvider>
+                <Cart 
+                    label="cart label"
+                    title="test composant"
+                    picture="/test.png" 
+                />
+            </ThemeProvider>
+        )
+        const cardTitle = screen.getByTestId('title-element');
+        expect(cardTitle.textContent).toBe(' test composant ');
+        
+        // 2ème methode:
+        //const cardTitle = screen.getByText(/test/i)
+        //expect(cardTitle.textContent).toBe(' test composant ');
+    })
+
+    test('change title', async () => {
+        
+        render(
+            <ThemeProvider>
+                <Cart 
+                    label="cart label"
+                    title="test composant"
+                    picture="/test.png" 
+                />
+            </ThemeProvider>
+        )
+        const cardTitle = screen.getByTestId('title-element');
+        expect(cardTitle.textContent).toBe(' test composant ');
+        fireEvent.click(cardTitle);
+        expect(cardTitle.textContent).toBe('⭐️ test composant ⭐️');
+
+        // 2ème methode:
+        // const cardTitle = screen.getByText(/test/i)
+        // const parentNode = cardTitle.closest('div')
+        // fireEvent.click(parentNode)
+        // expect(cardTitle.textContent).toBe('⭐️ test composant ⭐️')
+
+    })
+
+})
