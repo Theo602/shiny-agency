@@ -41,9 +41,6 @@ describe('Cart', () => {
         const cardTitle = screen.getByTestId('title-element');
         expect(cardTitle.textContent).toBe(' test composant ');
         
-        // 2ème methode:
-        //const cardTitle = screen.getByText(/test/i)
-        //expect(cardTitle.textContent).toBe(' test composant ');
     })
 
     test('change title', async () => {
@@ -62,11 +59,6 @@ describe('Cart', () => {
         fireEvent.click(cardTitle);
         expect(cardTitle.textContent).toBe('⭐️ test composant ⭐️');
 
-        // 2ème methode:
-        // const cardTitle = screen.getByText(/test/i)
-        // const parentNode = cardTitle.closest('div')
-        // fireEvent.click(parentNode)
-        // expect(cardTitle.textContent).toBe('⭐️ test composant ⭐️')
 
     })
 

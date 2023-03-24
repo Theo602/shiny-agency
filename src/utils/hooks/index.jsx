@@ -20,7 +20,7 @@ export function useFetch(url){
                 const data = await response.json();
                 setData(data);
             } catch (erreur) {
-                console.log('=== error ===', erreur);
+                //console.log('=== error ===', erreur);
                 setError(true);
             } finally {
                 setLoading(false);  

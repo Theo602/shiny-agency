@@ -112,7 +112,6 @@ function Results(){
     const { answers } = useContext(SurveyContext);
     const fetchParams = formatQueryParams(answers);
     const { data, isLoading, error } = useFetch(`http://localhost:8000/results?${fetchParams}`);
-
     const { resultsData } = data;
 
     if(error) {
@@ -125,7 +124,7 @@ function Results(){
 
             { isLoading ?
 
-                (<Loader />) 
+                (<Loader data-testid="loader" />) 
 
                 :
 
@@ -134,7 +133,7 @@ function Results(){
                     
                         {
                             (resultsData.length !== 0) ?  
-
+ 
                             (
                             
                                 <ContentResults>
@@ -159,10 +158,10 @@ function Results(){
                                         {
                                                 resultsData.map((title, index) => (
                                                     <ContentDescription key={`result-details-${title.title}-${index}`}>
-                                                        <TittleInformation theme={theme}>
+                                                        <TittleInformation theme={theme} data-testid="title-info">
                                                             {firstLetterCapitalize(title.title)}
                                                         </TittleInformation>
-                                                        <TextInformation theme={theme}>
+                                                        <TextInformation theme={theme} data-testid="description-info" >
                                                             {firstLetterCapitalize(title.description)}
                                                         </TextInformation>
                                                     </ContentDescription>

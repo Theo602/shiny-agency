@@ -44,7 +44,7 @@ function Freelances(){
     const { data, isLoading, error } = useFetch('http://localhost:8000/freelances'); 
     const { freelancersList } = data;   
     const { theme } = useTheme();
-
+    
     if(error) {
         return <ContentError theme={theme}>Oups il ya un problème</ContentError>
     }
@@ -58,7 +58,7 @@ function Freelances(){
 
             { isLoading ?
             
-                (<Loader />)
+                (<Loader data-testid="loader" />)
                 
                 :
 
