@@ -5,7 +5,7 @@ import colors from '../../utils/style/color'
 import styled from 'styled-components';
 import { Loader } from "../../utils/style/Loader";
 import { PageLink } from "../../utils/style/BtnLink";
-
+import EmptyList from "../../components/EmptyList/EmptyList";
 
 const ContainerResults = styled.section`
     margin: 4%;
@@ -32,12 +32,6 @@ const ContentInformation = styled.div`
 
 const ContentDescription = styled.div`
     margin: 30px 0;
-`;
-
-const ContentError = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 `;
 
 const TitleResults = styled.h2`
@@ -69,12 +63,6 @@ const TextInformation = styled.p`
     margin: 0px;
     line-height: 25px;
 `;
-
-const TextError = styled.p`
-    font-size: 25px;
-    color: ${({ theme }) => (theme === "light" ? colors.textSousTitle : colors.colorWhite)};
-    margin: 30px 0px;
-`
 
 const FetchError = styled.p`
     color: ${({ theme }) => (theme === "light" ? colors.primary : colors.colorWhite)};
@@ -113,7 +101,8 @@ function Results(){
     const fetchParams = formatQueryParams(answers);
     const { data, isLoading, error } = useFetch(`http://localhost:8000/results?${fetchParams}`);
     const { resultsData } = data;
-
+    //const resultsData = data?.resultsData
+    console.log(resultsData)
     if(error) {
         return <FetchError>Oups il ya un problème</FetchError>
     }
@@ -176,10 +165,7 @@ function Results(){
                             :
 
                             (
-                                <ContentError>
-                                    <TextError theme={theme}>Pas de résultats, veuillez répondre au questionnaire</TextError>
-                                    <PageLink to="/survey/1" $theme={theme}>Faire le test</PageLink>
-                                </ContentError>
+                                <EmptyList />
                             )
 
                         }

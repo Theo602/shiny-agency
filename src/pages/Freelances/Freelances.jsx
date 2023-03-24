@@ -4,7 +4,6 @@ import colors from '../../utils/style/color'
 import { Loader } from "../../utils/style/Loader";
 import { useFetch, useTheme } from "../../utils/hooks";
 
-
 const ContainerFreelance = styled.section`
     display: flex;
     flex-direction: column;
@@ -72,6 +71,7 @@ function Freelances(){
                                 label={ profil.job }
                                 picture={ profil.picture }
                                 title={ profil.name }
+                                theme={ theme }
                             />
 
                         ))  

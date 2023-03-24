@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useTheme } from '../../utils/hooks';
 import colors from '../../utils/style/color'
+import EmailInput from '../EmailInput/EmailImput';
 
 
 const FooterContainer = styled.footer`
@@ -10,7 +11,7 @@ const FooterContainer = styled.footer`
     justify-content: center; 
     background-color: ${({ theme }) => (theme === "light" ? colors.primary : colors.backgroundDark)};
     height: 50px;
-    padding: 10px;
+    padding: 20px;
 `;
 
 const NightModeButton = styled.button`
@@ -19,6 +20,7 @@ const NightModeButton = styled.button`
     cursor: pointer;
     color: ${colors.colorWhite};
     font-size: 16px;
+    margin: 0px 20px;
 `;
 
 function Footer(){
@@ -27,6 +29,7 @@ function Footer(){
 
     return(
         <FooterContainer theme={theme}>
+            <EmailInput theme={theme} /> 
             <NightModeButton theme={theme} onClick={() => toggleTheme()}>
                 Changer de mode : {theme === 'light' ? '☀️' : '🌙'}
             </NightModeButton>
