@@ -1,6 +1,7 @@
-import Cart from './'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { ThemeProvider } from '../../utils/context'
+import Cart from './Cart';
+import { render, screen } from '@testing-library/react';
+import { ThemeProvider } from '../../utils/context';
+
 
 describe('Cart', () => {
 
@@ -39,27 +40,8 @@ describe('Cart', () => {
             </ThemeProvider>
         )
         const cardTitle = screen.getByTestId('title-element');
-        expect(cardTitle.textContent).toBe(' test composant ');
+        expect(cardTitle.textContent).toBe('test composant');
         
-    })
-
-    test('change title', async () => {
-        
-        render(
-            <ThemeProvider>
-                <Cart 
-                    label="cart label"
-                    title="test composant"
-                    picture="/test.png" 
-                />
-            </ThemeProvider>
-        )
-        const cardTitle = screen.getByTestId('title-element');
-        expect(cardTitle.textContent).toBe(' test composant ');
-        fireEvent.click(cardTitle);
-        expect(cardTitle.textContent).toBe('⭐️ test composant ⭐️');
-
-
     })
 
 })

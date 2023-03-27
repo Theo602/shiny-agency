@@ -1,7 +1,7 @@
 import { rest } from "msw";
-import { setupServer } from 'msw/node'
-import { screen, waitForElementToBeRemoved } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
+import { setupServer } from 'msw/node';
+import { screen, waitForElementToBeRemoved } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import Freelances from './Freelances';
 import { render } from "../../utils/test";
 

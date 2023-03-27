@@ -1,32 +1,10 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { useTheme } from '../../utils/hooks';
 import darkLogo from '../../assets/img/dark-logo.png'
 import lightLogo from '../../assets/img/light-logo.png'
-import { useTheme } from '../../utils/hooks';
 import { StyleLink } from '../../utils/style/BtnLink'
+import { HeaderContainer, FigureLogo, ImgLogo, Nav } from './HeaderStyle'
 
-
-const HeaderContainer = styled.header`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    height: 150px;
-`;
-
-const FigureLogo = styled.figure`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
-const ImgLogo = styled.img`
-    width: 80%;
-`;
-
-const Nav = styled.nav`
-    padding-right: 2%;
-`;
 
 function Header(){
 

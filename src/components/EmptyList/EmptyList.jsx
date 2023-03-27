@@ -1,38 +1,7 @@
-import styled from 'styled-components';
-import imageEmpty from '../../assets/img/empty.svg'
 import { useTheme } from '../../utils/hooks';
-import colors from '../../utils/style/color'
+import imageEmpty from '../../assets/img/empty.svg';
+import {ContainerError, FirstTitle, FigureEmpty, ImgEmpty, SecondeTitle} from './EmptyListStyle';
 
-
-const ContainerError = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 4%;
-    margin: 4%;
-    background: ${({ theme }) => (theme === "light" ? colors.backgroundLight : colors.backgroundDark)};
-`;
-
-const FirstTitle = styled.h2`
-    color: ${({ theme }) => (theme === "light" ? colors.textTitle : colors.colorWhite)};
-    font-size: 25px;
-`;
-
-const SecondeTitle = styled.h3`
-    color: ${({ theme }) => (theme === "light" ? colors.textTitle : colors.colorWhite)};
-    font-size: 20px;
-`;
-
-const FigureEmpty = styled.figure`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2% 0;
-`;
-
-const ImgEmpty = styled.img`
-    width: 60%;
-`;
 
 function EmptyList(){
 

@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Home from './pages/Home/Home'
+import Home from './pages/Home/Home';
 import Survey from './pages/Survey/Survey';
 import Results from './pages/Results/Results';
 import Freelances from './pages/Freelances/Freelances';
 import Profile from './pages/Profile/Profile';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Error from './components/Error';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Error from './components/Error/Error';
 import { ThemeProvider, SurveyProvider } from './utils/context';
-import GlobalStyle from './utils/style/GlobalStyle'
+import GlobalStyle from './utils/style/GlobalStyle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

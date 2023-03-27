@@ -1,77 +1,13 @@
 import { useContext } from "react";
 import { SurveyContext } from "../../utils/context";
 import { useFetch, useTheme } from "../../utils/hooks";
-import colors from '../../utils/style/color'
-import styled from 'styled-components';
+import EmptyList from "../../components/EmptyList/EmptyList";
 import { Loader } from "../../utils/style/Loader";
 import { PageLink } from "../../utils/style/BtnLink";
-import EmptyList from "../../components/EmptyList/EmptyList";
+import { ContainerResults, ContentResults, ContentInformation, ContentDescription, 
+         TitleResults, SubTitleResults, TittleInformation, TextInformation, FetchError } from './ResultsStyle';
 
-const ContainerResults = styled.section`
-    margin: 4%;
-    background: ${({ theme }) => (theme === "light" ? colors.backgroundLight : colors.backgroundDark)};
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 4%;
-    min-height: calc(100vh - 200px);
-`;
-
-const ContentResults = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-`;
-
-const ContentInformation = styled.div`
-    max-width: 60%;
-    padding: 40px 0;
-`;
-
-const ContentDescription = styled.div`
-    margin: 30px 0;
-`;
-
-const TitleResults = styled.h2`
-    font-size: 30px;
-    color: ${({ theme }) => (theme === "light" ? colors.textTitle : colors.colorWhite)};
-    font-size: 30px;
-    word-break: break-all;
-    max-width: 47%;
-    line-height: 50px;
-    text-align: center;
-    padding-bottom: 20px;
-    
-`;
-
-const SubTitleResults = styled.span`
-    color: ${({ theme }) => (theme === "light" ? colors.primary : colors.colorWhite)};
-    padding-left: 10px;
-`;
-
-const TittleInformation = styled.h3`
-    font-size: 25px;
-    color: ${({ theme }) => (theme === "light" ? colors.primary : colors.colorWhite)};
-    margin: 10px 0px;
-`;
-
-const TextInformation = styled.p`
-    color: ${({ theme }) => (theme === "light" ? colors.colorBlack : colors.colorWhite)};
-    font-size: 20px;
-    margin: 0px;
-    line-height: 25px;
-`;
-
-const FetchError = styled.p`
-    color: ${({ theme }) => (theme === "light" ? colors.primary : colors.colorWhite)};
-    font-size: 25px;
-    text-align: center;
-    padding: 4%;
-    min-height: calc(100vh - 200px);
-`;
-
+         
 export function formatQueryParams(answers){
     
     const answersNumbers = Object.keys(answers);
