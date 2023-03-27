@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import colors from '../../utils/style/color'
 import { Loader } from "../../utils/style/Loader";
 import { useFetch, useTheme } from "../../utils/hooks";
+import { Link } from 'react-router-dom';
 
 const ContainerFreelance = styled.section`
     display: flex;
@@ -38,6 +39,10 @@ const ContentError = styled.p`
     min-height: calc(100vh - 200px);
 `;
 
+const LinkCart = styled(Link)`
+    text-decoration: none;
+`
+
 function Freelances(){
      
     const { data, isLoading, error } = useFetch('http://localhost:8000/freelances'); 
@@ -65,7 +70,7 @@ function Freelances(){
                     
                     {  
                         freelancersList.map((profil, index ) => (
-                                                      
+                            <LinkCart key={`freelance-${profil.id}`} to={`/profile/${profil.id}`}>                          
                             <Cart 
                                 key={`${profil.name}-${profil.id}`}
                                 label={ profil.job }
@@ -73,7 +78,7 @@ function Freelances(){
                                 title={ profil.name }
                                 theme={ theme }
                             />
-
+                            </LinkCart>
                         ))  
                     }
 

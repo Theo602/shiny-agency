@@ -3,8 +3,20 @@ import DefaultPicture from '../../assets/img/profile.png'
 import styled from 'styled-components';
 import colors from '../../utils/style/color'
 import { useTheme } from '../../utils/hooks';
-import { useState } from 'react';
 
+const CardWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: ${({ theme }) => (theme === "light" ? colors.backgroundLight : colors.backgroundDark)};
+    border-radius: 30px;
+    transition: 200ms;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 2px 2px 10px ${({ theme }) => (theme === "light" ? '#e2e3e9' : '#312298')};  
+    }
+`
 
 const CardLabel = styled.p`
     color: ${({ theme }) => (theme === "light" ? colors.primary : colors.colorWhite)};
@@ -29,34 +41,18 @@ const CardImage = styled.img`
     width: 140px;
 `;
 
-const CardWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: ${({ theme }) => (theme === "light" ? colors.backgroundLight : colors.backgroundDark)};
-    border-radius: 30px;
-    transition: 200ms;
-    &:hover {
-        cursor: pointer;
-        box-shadow: 2px 2px 10px ${({ theme }) => (theme === "light" ? '#e2e3e9' : '#312298')};
-        
-    }
-`
 
 function Card({ label, title, picture }) {
     
     const { theme } = useTheme();
-    const [isFavorite, setIsFavorite ] = useState(false);
-    const star = isFavorite ? '⭐️' : '';
+     
+     
 
     return (
-        <CardWrapper theme={theme} onClick={() => setIsFavorite(!isFavorite)}>
+        <CardWrapper theme={theme} >
             <CardLabel theme={theme}>{label}</CardLabel>
             <CardImage src={picture} alt="freelance" />
-            <CardTitle data-testid="title-element" theme={theme}>
-                {star} {title} {star}
-            </CardTitle>
+            <CardTitle data-testid="title-element" theme={theme}>{title}</CardTitle>
         </CardWrapper>
     )
 }

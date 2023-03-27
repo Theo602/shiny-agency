@@ -101,8 +101,7 @@ function Results(){
     const fetchParams = formatQueryParams(answers);
     const { data, isLoading, error } = useFetch(`http://localhost:8000/results?${fetchParams}`);
     const { resultsData } = data;
-    //const resultsData = data?.resultsData
-    console.log(resultsData)
+
     if(error) {
         return <FetchError>Oups il ya un problème</FetchError>
     }
