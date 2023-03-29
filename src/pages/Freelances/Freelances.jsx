@@ -34,7 +34,6 @@ function Freelances(){
                             freelancersList.map((profil, index ) => (
                                 <LinkCart key={`freelance-${profil.id}`} to={`/profile/${profil.id}`}>                          
                                 <Cart 
-                                    key={`${profil.name}-${profil.id}`}
                                     label={ profil.job }
                                     picture={ profil.picture }
                                     title={ profil.name }

@@ -1,6 +1,6 @@
-import Footer from './Footer';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { ThemeProvider } from '../../utils/context';
+import Footer from './'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { ThemeProvider } from '../../utils/context'
 
 describe('Footer', () => {
     test('Should render without crash', async () => {

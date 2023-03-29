@@ -4,11 +4,14 @@ import darkLogo from '../../assets/img/dark-logo.png'
 import lightLogo from '../../assets/img/light-logo.png'
 import { StyleLink } from '../../utils/style/BtnLink'
 import { HeaderContainer, FigureLogo, ImgLogo, Nav } from './HeaderStyle'
-
+import { useState } from 'react';
+import Burger from '../Burger/Burger';
+import NavBarResponsive from '../NavBarResponsive/NavBarResponsive';
 
 function Header(){
 
     const { theme } = useTheme();
+    const [navOpen, setNavOpen] = useState(false);
 
     return(
 
@@ -23,6 +26,9 @@ function Header(){
                 <StyleLink $theme={theme} to="/freelances">Profils</StyleLink>
                 <StyleLink  to="/survey/1" $isFullLink={theme}>Faire le test</StyleLink>
             </Nav>
+
+            <Burger navOpen={navOpen} setNavOpen={setNavOpen}/> 
+            <NavBarResponsive navOpen={navOpen} /> 
 
         </HeaderContainer>
     )

@@ -1,9 +1,9 @@
 import Results, { formatJobList, formatQueryParams } from "./Results";
 import { rest } from "msw";
-import { setupServer } from 'msw/node';
-import { screen, waitForElementToBeRemoved } from '@testing-library/react';
+import { setupServer } from 'msw/node'
+import { screen, waitForElementToBeRemoved } from '@testing-library/react'
 import { render } from "../../utils/test";
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect'
 
  
 const server = setupServer(
