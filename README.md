@@ -1,6 +1,4 @@
-# Getting Started with Create React App
-
-Projet Agence Shiny - React
+# Projet Agence Shiny - React
 
 ## Available Scripts
 
