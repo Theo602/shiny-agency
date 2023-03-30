@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import colors from '../../utils/style/color';
+import devices from '../../utils/responsive/devices';
+
 
 export const ContainerResults = styled.section`
     margin: 4%;
@@ -20,8 +22,17 @@ export const ContentResults = styled.div`
 `;
 
 export const ContentInformation = styled.div`
-    max-width: 60%;
+    width: 60%;
     padding: 40px 0;
+
+    @media screen and ${devices.tabletM} {
+        width: 80%;
+    }
+
+    @media screen and ${devices.mobileL} {
+        width: 90%;
+    }
+ 
 `;
 
 export const ContentDescription = styled.div`
@@ -33,11 +44,22 @@ export const TitleResults = styled.h2`
     color: ${({ theme }) => (theme === "light" ? colors.textTitle : colors.colorWhite)};
     font-size: 30px;
     word-break: break-all;
-    max-width: 47%;
+    width: 47%;
     line-height: 50px;
     text-align: center;
     padding-bottom: 20px;
-    
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    word-break: unset;
+    @media screen and ${devices.tabletL} {
+        width: 88%;
+    }
+
+    @media screen and ${devices.tabletM} {
+        width: 94%;
+    }
+
 `;
 
 export const SubTitleResults = styled.span`

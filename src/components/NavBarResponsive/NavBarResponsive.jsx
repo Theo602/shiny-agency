@@ -1,46 +1,46 @@
-import { Link } from 'react-router-dom';
 import { useTheme } from '../../utils/hooks';
+import { useEffect, useState } from 'react';
+import { StyleLink } from '../../utils/style/BtnLink';
+import { NavResponsive } from './NavBarResponsiveStyle';
 
-import styled from 'styled-components';
-import devices from '../../utils/responsive/devices';
-import { StyleLink } from '../../utils/style/BtnLink'
-
-const NavResponsive = styled.nav`
-    
-    display: none;
-
-    @media screen and ${devices.tablet} {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100%;
-        background-color: #fff;
-        transform: ${({ navOpen }) => navOpen ? 'translateX(0)' : 'translateX(-100%)'};
-        transition: transform 0.9s ease-in-out;
-        z-index: 1;
-        ${StyleLink}{
-            font-size: 30px;
-        }    
-    }
-
-`;
-
-function NavBarResponsive({ navOpen }){
+function NavBarResponsive({ navOpen, setNavOpen }){
 
     const { theme } = useTheme();
+    const [ checkWidth, setCheckWidth] = useState(window.innerWidth)
+
+    useEffect(() => {
+
+        const changeWidth = () => {
+            setCheckWidth(window.innerWidth);
+
+            if(window.innerWidth > 992) {
+                setNavOpen(false);
+            }
+
+        }
+
+        window.addEventListener('resize', changeWidth);
+
+        return () => {
+            window.removeEventListener('resize', changeWidth);
+        }
+
+    }, [setNavOpen]);
 
     return(
-           
-            <NavResponsive navOpen={navOpen}>
-                <StyleLink $theme={theme} to="/">Accueil</StyleLink>
-                <StyleLink $theme={theme} to="/freelances">Profils</StyleLink>
-                <StyleLink  to="/survey/1" $theme={theme}>Faire le test</StyleLink>
-            </NavResponsive>
+        <>
+           { (checkWidth <= 992) && (
+                
+                <NavResponsive theme={theme} navOpen={navOpen}>
+                    <StyleLink $theme={theme} to="/">Accueil</StyleLink>
+                    <StyleLink $theme={theme} to="/freelances">Profils</StyleLink>
+                    <StyleLink  to="/survey/1" $theme={theme}>Faire le test</StyleLink>
+                </NavResponsive>
+           )
+
+           }
+
+        </>
 
     )
 }

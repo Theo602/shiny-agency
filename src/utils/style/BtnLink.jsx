@@ -34,6 +34,7 @@ export const StyleLink = styled(Link)`
 
 export const PageLink = styled(Link)`
     text-decoration: none;
+    text-align: center;
     font-size: 20px;
     font-weight: bold;
     padding: 15px 25px;

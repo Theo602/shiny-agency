@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 import colors from '../../utils/style/color';
+import devices from '../../utils/responsive/devices';
 
 export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0px 20px;
+
+  @media screen and ${devices.tabletL} {
+    margin: 20px 20px 10px 20px;
+  }
+
 `
 
 export const StyledLabel = styled.label`

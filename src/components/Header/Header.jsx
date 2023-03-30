@@ -28,7 +28,7 @@ function Header(){
             </Nav>
 
             <Burger navOpen={navOpen} setNavOpen={setNavOpen}/> 
-            <NavBarResponsive navOpen={navOpen} /> 
+            <NavBarResponsive navOpen={navOpen} setNavOpen={setNavOpen}/> 
 
         </HeaderContainer>
     )

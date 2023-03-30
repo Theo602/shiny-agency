@@ -27,22 +27,26 @@ afterAll(() => server.close());
 
 const freelancesMockedData = [
     {
+        id: 1,
         name: 'Aragorn',
         job: 'Roi frontend',
         picture: ''
 
     },
     {
+        id: 2,
         name: 'Gandalf',
         job: 'Magicien backend',
         picture: ''
     },
     {
+        id: 3,
         name: 'Arwen',
         job: 'Magicienne fullstack',
         picture: ''
     },
     {
+        id: 4,
         name: 'Legolas',
         job: 'Magicien webdesigner',
         picture: ''

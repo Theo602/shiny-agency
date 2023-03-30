@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import devices from '../../utils/responsive/devices';
+import colors from '../../utils/style/color';
 
 export const StyledBurger = styled.button`
   display: none;
-  position: fixed;
+  position: ${({ navOpen }) => navOpen ? 'fixed' : 'absolute'};
   top: 5%;
   right: 5%;
   flex-direction: column;
@@ -16,7 +17,7 @@ export const StyledBurger = styled.button`
   padding: 0;
   z-index: 10;
   
-  @media screen and ${devices.tablet} {
+  @media screen and ${devices.tabletL} {
     display: flex;     
   }
 
@@ -31,7 +32,7 @@ export const StyledBurger = styled.button`
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
-    background-color: black;
+    background-color: ${({ theme }) => (theme === "light" ? colors.colorBlack : colors.colorWhite)};
 
     :first-child {
         transform: ${({ navOpen }) => navOpen ? 'rotate(45deg)' : 'rotate(0)'};
