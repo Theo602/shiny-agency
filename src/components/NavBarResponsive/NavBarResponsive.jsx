@@ -27,14 +27,18 @@ function NavBarResponsive({ navOpen, setNavOpen }){
 
     }, [setNavOpen]);
 
+    const outClick = () => {
+        setNavOpen(false);
+    }
+
     return(
         <>
            { (checkWidth <= 992) && (
                 
                 <NavResponsive theme={theme} navOpen={navOpen}>
-                    <StyleLink $theme={theme} to="/">Accueil</StyleLink>
-                    <StyleLink $theme={theme} to="/freelances">Profils</StyleLink>
-                    <StyleLink  to="/survey/1" $theme={theme}>Faire le test</StyleLink>
+                    <StyleLink $theme={theme} onClick={() => outClick()} to="/">Accueil</StyleLink>
+                    <StyleLink $theme={theme} onClick={() => outClick()} to="/freelances">Profils</StyleLink>
+                    <StyleLink $theme={theme} onClick={() => outClick()} to="/survey/1" >Faire le test</StyleLink>
                 </NavResponsive>
            )
 
